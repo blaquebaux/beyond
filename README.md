@@ -24,10 +24,29 @@ Compound annual growth rate is a long-horizon idea; Beyond flips it short — an
 - Acceleration — is the *change* in short-term growth rate predictive beyond its level?
 - Regime gate — separate genuine short-term compounding from mean-reverting chop (see Bounce).
 
-Nothing above is implemented or validated. This is the map, not the territory.
+## Research — first pass done
+
+Full detail in [`research/README.md`](research/README.md). The scorecard:
+
+| # | Question | Verdict |
+|---|----------|---------|
+| 1 | Where does growth flip from reversal to momentum? | ✅ **mapped** — reversal ≤10d, momentum ≥20d |
+| 2a | Clean form of the sleeve? | ✅ **keeper** — long top-q minus EW, 60d +0.52 net, β~0 |
+| 2b | Does acceleration help? | ❌ rejected — Δ growth is a *reversal* signal (−0.42) |
+| 2c | Regime gate? | ✅ momentum improves gated to *trend* (mirror of Bounce) |
+
+**The synthesis:** Beyond fills the horizon gap between Bounce (≤10d reversal) and Boom
+(12-month momentum). The cross-section flips from reversal to momentum at ~20 days, so
+"growth over weeks" *is* a real continuation signal — expressed the clean way (long winners
+**minus the market**, not short the losers, which bounce). Keeper: multi-horizon (20/40/60)
+growth, beta-neutral, **net +0.50** (single 60d +0.65), beta ~0. Two honest caveats — the
+edge **decays** (+0.76 → +0.29 across halves) and it's the shorter-horizon cousin of Boom
+(corr +0.34), so it overlaps the momentum family more than the market-neutral sleeves do.
+Acceleration (Δ growth) is rejected — it's reversal, not momentum.
 
 ## Status
-**Scaffold.** Engine wired as a submodule; strategy research not yet conducted.
+**Research: first pass complete; multi-horizon keeper prototyped** (`research/`). No live
+driver yet; a multi-sleeve-ingredient / paper-A/B candidate. Nothing validated to the spine's bar.
 
 ## The Blaque Baux family
 This repo is one sleeve of the **Blaque Baux** family — a single governed engine steered in
@@ -37,7 +56,7 @@ base/blueprint and holds the [full family roster](https://github.com/Carter-Warr
 ## Layout
 ```
 engine/     the Blaque Baux platform (git submodule -> Carter-Warrens/blaquebaux)
-research/   Path-A strategy sketches (to come)
+research/   three Path-A sketches (horizon curve, sleeve/acceleration/gate) + prototype + scorecard
 live/       governed live drivers (once a sleeve graduates to paper A/B)
 ```
 
