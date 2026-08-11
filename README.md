@@ -45,8 +45,14 @@ edge **decays** (+0.76 → +0.29 across halves) and it's the shorter-horizon cou
 Acceleration (Δ growth) is rejected — it's reversal, not momentum.
 
 ## Status
-**Research: first pass complete; multi-horizon keeper prototyped** (`research/`). No live
-driver yet; a multi-sleeve-ingredient / paper-A/B candidate. Nothing validated to the spine's bar.
+**Research: first pass complete; multi-horizon keeper — standalone driver built** (`research/` +
+`live/`). `live/beyond_live.jl` runs it standalone through the engine's governed order path + Layer-3
+safety gate: long the top-quintile by 20/40/60-day growth minus the equal-weight basket (beta ~0),
+~1× gross. **Dry-run by default**; graduates to paper with its own isolated keys. Not validated to the
+spine's bar.
+```bash
+BB_DRYRUN=1 julia --project=engine live/beyond_live.jl
+```
 
 ## The Blaque Baux family
 This repo is one sleeve of the **Blaque Baux** family — a single governed engine steered in
